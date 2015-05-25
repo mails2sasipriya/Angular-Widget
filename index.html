@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="base.css"/>
+    <link rel="stylesheet" href="css/normalize.css"/>
+    <script src="angular.js"></script>
+    <script src="component/widget/widget.js"></script>
+    <script>
+        angular.module('myApp', ['myApp.widget']).factory('uuid', function () {
+            return {
+                v4: function () {
+                    // refer to http://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
+                    function s4() {
+                        return Math.floor((1 + Math.random()) * 0x10000)
+                                .toString(16)
+                                .substring(1);
+                    }
+                    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+                            s4() + '-' + s4() + s4() + s4();
+                }
+            }
+        }).controller('WidgetsController', function ($scope, uuid) {
+
+            $scope.delete = function (wid) {
+                console.log(wid);
+                var index;
+                for (var i = 0; i < $scope.widgets.length; i++) { // would use lodash for this
+                    if (wid === $scope.widgets[i].id) {
+                        index = i;
+                        break;
+                    }
+                }
+                $scope.widgets.splice(index, 1);
+            };
+
+            $scope.widgets = [];
+            $scope.addWidget = function (val) {
+                switch (val) {
+                    case 1:
+                        $scope.widgets.push({
+                            id: uuid.v4(), // change this to a uuid
+                            class: 'w1',
+                            paused: false,
+                            positive: true
+                        });
+                        break;
+                    case 2:
+                        $scope.widgets.push({
+                            id: uuid.v4(), // change this to a uuid
+                            class: 'w2',
+                            paused: true,
+                            positive: false
+                        });
+                        break;
+                }
+            };
+
+        });
+    </script>
+</head>
+<body>
+<section ng-controller="WidgetsController">
+    <div class="buttons">
+        <div><button id="w1" ng-click="addWidget(1)">Add widget 1</button></div>
+        <div><button id="w2" ng-click="addWidget(2)">Add widget 2</button></div>
+    </div>
+    <div class="widgets">
+        <!-- <div class="widgets-container"-->
+        <div ng-repeat="w in widgets" widget id="{{w.id}}" class="{{w.class}}" paused={{w.paused}} positive="{{w.positive}}" delete=delete></div>
+    </div>
+    <!-- </div>-->
+
+
+</section>
+</body>
+</html>

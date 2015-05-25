@@ -1,0 +1,148 @@
+$font-family: Helvetica, sans-serif;
+$pink: #c38e8e;
+$green: #b5d5a7;
+
+* {
+  font-family: $font-family;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.container {
+  margin: 5%;
+  border: 2px solid black;
+  overflow: hidden;
+}
+
+section {
+  margin: 5%;
+  border: 2px solid black;
+  overflow: hidden;
+}
+
+div.buttons {
+  height: 100%;
+  width: 25%;
+  float: left;
+  padding-top: 1em;
+  div {
+    margin-bottom: 0.5em;
+    text-align: center;
+  }
+}
+
+button {
+  margin: 10%;
+  padding: 1em;
+  width: 80%;
+}
+
+#w1 {
+  background-color: $green;
+}
+
+#w2 {
+  background-color: $pink;
+}
+
+#w1:hover {
+  background-color: darken($green, 20%);
+  cursor: pointer;
+  transition: all 500ms ease;
+}
+
+#w2:hover {
+  background-color: darken($pink, 20%);
+  cursor: pointer;
+  transition: all 500ms ease;
+}
+
+.widgets {
+  margin: 0;
+  width: 70%;
+  height: auto;
+  min-height: 10em;
+  overflow: inherit;
+  border-left: 2px solid black;
+  padding-bottom: 2em;
+  float: left;
+  position: relative;
+}
+
+.w1, .w2 {
+  border: 2px solid black;
+  margin-left: 10%;
+  margin-top: 2em;
+  width: 37.5%;
+  height: 10em;
+  float: left;
+}
+
+.w1 {
+  background-color: $green;
+  position: relative;
+}
+
+.w2 {
+  background-color: $pink;
+  position: relative;
+}
+
+.widget-header {
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  height: 20%;
+  width: 100%;
+  border-bottom: 2px solid black;
+  line-height: 2em;
+  position: relative;
+}
+
+.widget-title {
+  padding-left: 1em;
+}
+
+.widget-close {
+  right: 0;
+  top: 0;
+  padding-right: 1em;
+  position: absolute;
+}
+
+.widget-close:hover, .play:hover, .pause:hover {
+  cursor: pointer;
+  font-weight: 800;
+  transition: all 1s ease;
+}
+
+.random-number {
+  font-weight: 400;
+  font-size: 300%;
+  text-align: center;
+  line-height: 2em;
+}
+
+.widget-footer {
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+}
+
+.play {
+  padding-left: 1em;
+  line-height: 2em;
+}
+
+.pause {
+  right: 0;
+  bottom: 0;
+  padding-right: 1em;
+  line-height: 2em;
+  position: absolute;
+}
